@@ -1,0 +1,69 @@
+---
+title: "p8105_hw1_yh3094"
+author: "Yun He"
+date: "September 16, 2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+# Problem 1
+
+The chunk below focuses on variable types and coercion.
+
+```{r p1_solution_part1}
+p1_df = tibble(
+  vec_numeric = runif(10, 0, 5),
+  vec_logical = vec_numeric > 2,
+  vec_char = c("I", "am", "now", "creating", "a", "vector", "whose", "length", "is", "10"),
+  vec_factor = factor(c("Female", "Male", "Male", "Male", "Male", "Male", 
+               "Female", "Female", "Female", "Female"))
+)
+
+mean(p1_df$vec_numeric)
+mean(p1_df$vec_logical)
+mean(p1_df$vec_char)
+mean(p1_df$vec_factor)
+```
+
+When taking the mean of each variable in my dataframe, it works for numeric and logical factors and doesn't work for character and factor vectors.
+
+The chunk below applies the `as.numeric` function to the logical, character, and factor variables.
+
+```{r p1_solution_part2, eval=FALSE}
+as.numeric(p1_df$vec_logical)
+as.numeric((p1_df$vec_char))
+as.numeric(p1_df$vec_factor)
+```
+
+The chunk below converts the character variable from character to factor to numeric, and converts the factor variable from factor to character to numeric.
+
+```{r}
+as.numeric(factor(p1_df$vec_char))
+as.numeric(as.character(p1_df$vec_factor))
+```
+
+# Problem 2
+
+The chunk below focuses on plotting and the use of inline R code.
+
+```{r}
+p2_df = tibble(
+  x = rnorm(1000),
+  y = rnorm(1000),
+  p2_vec_logical = (x + y) > 0,
+  p2_vec_numeric = as.numeric(p2_vec_logical),
+  p2_vec_factor = factor(p2_vec_logical)
+)
+```
+
+The size of the datset `p2_df` is `r nrow(p2_df)` rows and `r ncol(p2_df)` columns. 
+
+The mean and median of `x` is `r mean(p2_df$x)` and `r median(p2_df$x)` respectively.
+
+The proportion of cases for which the logical vector is TRUE is `r round(sum(p2_df$p2_vec_numeric)/1000, digits=2)`.
+
+
+
