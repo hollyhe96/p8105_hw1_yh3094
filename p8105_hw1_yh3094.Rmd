@@ -68,9 +68,17 @@ The proportion of cases for which the logical vector is TRUE is `r round(sum(p2_
 The chunk below makes a scatterplot of `y` vs `x` with color points using the logical variable.
 
 ```{r p2_yx_scatter_logical}
-ggplot(
-  
-)
+ggplot(p2_df, aes(x, y, color = p2_vec_logical)) + geom_point()
 ```
 
+The chunk below makes a scatterplot of `y` vs `x` with color points using the numeric variable.
 
+```{r p2_yx_scatter_numeric}
+ggplot(p2_df, aes(x, y, color = p2_vec_numeric)) + geom_point()
+```
+
+The chunk below makes a scatterplot of `y` vs `x` with color points using the factor variable.
+
+```{r p2_yx_scatter_factor}
+ggplot(p2_df, aes(x, y, color = p2_vec_factor)) + geom_point()
+```
