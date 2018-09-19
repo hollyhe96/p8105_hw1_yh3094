@@ -40,7 +40,7 @@ The chunk below applies the `as.numeric` function to the logical, character, and
 
 ```{r p1_as_numeric, eval=FALSE}
 as.numeric(p1_df$vec_logical)
-as.numeric((p1_df$vec_char))
+as.numeric(p1_df$vec_char)
 as.numeric(p1_df$vec_factor)
 ```
 
@@ -53,7 +53,7 @@ The logical and factor vectors can be converted to numeric vectors, while the ch
 The chunk below converts the character variable from character to factor to numeric, and converts the factor variable from factor to character to numeric.
 
 ```{r p1_conversion}
-as.numeric(factor(p1_df$vec_char))
+as.numeric(as.factor(p1_df$vec_char))
 as.numeric(as.character(p1_df$vec_factor))
 ```
 
@@ -75,13 +75,13 @@ p2_df = tibble(
   y = rnorm(1000),
   p2_vec_logical = (x + y) > 0,
   p2_vec_numeric = as.numeric(p2_vec_logical),
-  p2_vec_factor = factor(p2_vec_logical)
+  p2_vec_factor = as.factor(p2_vec_logical)
 )
 ```
 
 ## Describe vectors using inline R code
 
-The size of the datset `p2_df` is `r nrow(p2_df)` rows and `r ncol(p2_df)` columns. 
+The size of the dataset `p2_df` is `r nrow(p2_df)` rows and `r ncol(p2_df)` columns. 
 The mean and median of `x` is `r mean(p2_df$x)` and `r median(p2_df$x)`, respectively.
 The proportion of cases for which the logical vector is TRUE is `r round(sum(p2_df$p2_vec_numeric)/1000, digits=2)`.
 
