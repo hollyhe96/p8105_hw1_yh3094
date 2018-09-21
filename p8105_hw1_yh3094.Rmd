@@ -30,7 +30,7 @@ mean(p1_df$vec_char)
 mean(p1_df$vec_factor)
 ```
 
-### Comments on the results
+### Comment on the results
 
 When taking the mean of each variable in my dataframe, it works for numeric and logical factors, and doesn't work for character and factor vectors. Because regarding the `x` in the function `mean(x, ...)`, it says currently there are only methods for numeric/logical vectors and date, date-time and time interval objects.
 
@@ -44,9 +44,9 @@ as.numeric(p1_df$vec_char)
 as.numeric(p1_df$vec_factor)
 ```
 
-### Comments on the results
+### Comment on the results
 
-The logical and factor vectors can be converted to numeric vectors, while the character vector can't. 
+The logical and factor vectors can be converted to numeric vectors, while the character vector can't. Because the `as.numeric` function is to interpret objects as numbers. 
 
 ## Convert Variable types
 
@@ -57,7 +57,7 @@ as.numeric(as.factor(p1_df$vec_char))
 as.numeric(as.character(p1_df$vec_factor))
 ```
 
-### Comments on the results
+### Comment on the results
 
 The character variable can be converted from character to factor to numeric, while the factor variable can't be converted from factor to character to numeric. Because character vectors can't be converted to numeric vectors. 
 
@@ -101,12 +101,20 @@ yx_scatter_numeric = ggplot(p2_df, aes(x, y, color = p2_vec_numeric)) + geom_poi
 yx_scatter_numeric
 ```
 
+### Comment on the color scales
+
+Different colors of points from dark blue to light blue represent different values of the numeric variable from 0.00 to 1.00, respectively. The numeric variable is converted from the logical variable which is either TRUE or FALSE for the logical expression 'x + y > 0'. So, the dark blue point means the value of the numeric variable is 0.00, which also means the logical variable is FALSE, ie. x + y <= 0. And the light blue point means the value of the numeric variable is 1.00, which also means the logical variable is TRUE, ie. x + y > 0. 
+
 The chunk below makes a scatterplot of `y` vs `x` with color points using the factor variable.
 
 ```{r p2_yx_scatter_factor}
 yx_scatter_factor = ggplot(p2_df, aes(x, y, color = p2_vec_factor)) + geom_point()
 yx_scatter_factor
 ```
+
+### Comment on the color scales
+
+The factor variable is also converted from the logical variable which is either TRUE or FALSE for the logical expression 'x + y > 0'. The red point in the plot above represents the value of the factor variable is FALSE, which also means the logical variable is FALSE, ie. x + y <= 0. The green point represents the value of the factor variable is TRUE, which also means the logical variable is TRUE, ie. x + y > 0.
 
 ## Export the first scatterplot
 
