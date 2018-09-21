@@ -94,6 +94,10 @@ yx_scatter_logical = ggplot(p2_df, aes(x, y, color = p2_vec_logical)) + geom_poi
 yx_scatter_logical
 ```
 
+### Comment on the color scales
+
+Values of the logical variable are either TRUE or FALSE for the logical expression 'x + y > 0'. The red point in the plot above represents the value of the logical variable is FALSE, ie. x + y <= 0. The green point represents the value of the logical variable is TRUE, ie. x + y > 0.
+
 The chunk below makes a scatterplot of `y` vs `x` with color points using the numeric variable.
 
 ```{r p2_yx_scatter_numeric}
